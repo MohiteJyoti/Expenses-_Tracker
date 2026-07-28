@@ -4,9 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 
-import javax.annotation.processing.Generated;
 import java.time.LocalDate;
 
 @Entity
@@ -14,7 +12,7 @@ public class Expense {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     private String category;
     private double amount;
@@ -24,7 +22,7 @@ public class Expense {
     public Expense() {
     }
 
-    public Expense(long id, String category, double amount, LocalDate date, String title) {
+    public Expense(Long id, String category, double amount, LocalDate date, String title) {
         this.id = id;
         this.category = category;
         this.amount = amount;
@@ -32,11 +30,11 @@ public class Expense {
         this.title = title;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
