@@ -1,8 +1,10 @@
 package com.expenses.expensesTracker.service;
 
+import com.expenses.expensesTracker.exception.ResourceNotFoundException;
 import com.expenses.expensesTracker.model.Expense;
 import com.expenses.expensesTracker.repository.ExpenseRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,10 +30,11 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public Expense getExpenseById(Long id) {
         return expenseRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Expense not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Expense not found with id: " + id));
     }
 
     @Override
+    @Transactional
     public Expense updateExpense(Long id, Expense updatedExpense) {
         Expense existingExpense = getExpenseById(id);
 
