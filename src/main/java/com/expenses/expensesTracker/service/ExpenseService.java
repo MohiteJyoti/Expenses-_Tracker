@@ -1,18 +1,20 @@
 package com.expenses.expensesTracker.service;
 
+import com.expenses.expensesTracker.dto.ExpenseRequest;
+import com.expenses.expensesTracker.dto.ExpenseResponse;
 import com.expenses.expensesTracker.model.Expense;
 
 
 import java.util.List;
 public interface ExpenseService {
 
-    Expense createExpense(Expense expense);
+    ExpenseResponse  createExpense(ExpenseRequest request);
 
-    List<Expense> getAllExpenses();
+    List<ExpenseResponse> getAllExpenses();
 
-    Expense getExpenseById(Long id);
+    ExpenseResponse  getExpenseById(Long id);
 
-    Expense updateExpense(Long id, Expense updatedExpense);
+    ExpenseResponse  updateExpense(Long id, ExpenseRequest request);
 
     void deleteExpense(Long id);
 }
